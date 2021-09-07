@@ -202,7 +202,7 @@ class PicklingPool(Pool):
         self._backward_reducers = backward_reducers
         poolargs = dict(processes=processes)
         poolargs.update(kwargs)
-        super(PicklingPool, self).__init__(**poolargs)
+        super(PicklingPool, self).__init__(maxtasksperchild=1,**poolargs)
 
     def _setup_queues(self):
         context = getattr(self, '_ctx', mp)
